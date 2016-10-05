@@ -1,0 +1,47 @@
+<div class="col-sm-8 col-sm-offset-2">
+	<div class="pull-right">
+		<a href="/">Logout</a>
+	</div>
+<h1>Welcome, {{current_user.name}}!</h1>
+	<br>
+	<input type="text" ng-model="filter_name" placeholder="Search Category" class="pull-right">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Category</th>
+				<th>Topic</th>
+				<th>User Name</th>
+				<th>Posts</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="topic in topics | filter:filter_name | orderBy: 'topic.created'">
+				<td ng-bind="topic.category"></td>
+				<td><a href="#/topic/{{topic._id}}" ng-bind="topic.topic"></a></td>
+				<td><a href="#/profile/{{topic._user._id}}" ng-bind="topic._user.name"></td>
+				<td ng-bind="topic.posts.length"></td>
+			</tr>
+		</tbody>
+	</table>
+	<h5 style="color: red;" class="error hide"> user already exists</h5>
+		<h2>Add a New Topic:</h2>
+		<label for="topic">Topic:</label>
+		<input type="text" ng-model="new_topic.topic">
+		<br>
+		<label for="category">Category:</label>
+		<select ng-model="new_topic.category">
+			<option value="" disabled>Choose Category</option>
+			<option value="HTML">HTML</option>
+			<option value="Python">Python</option>
+			<option value="PHP">PHP</option>
+			<option value="Ruby on Rails">Ruby on Rails</option>
+			<option value="MySQL">MySQL</option>
+			<option value="iOS">iOS</option>
+		</select>
+		<br>
+		<label for="description">Description:</label>
+		<textarea style="vertical-align: top" ng-model="new_topic.description" cols="70" rows="5"></textarea>
+		<input type="submit" ng-click="addTopic()" class="btn btn-success pull-right" value="Submit">
+</div>
+
+

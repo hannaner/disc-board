@@ -1,0 +1,33 @@
+<div class="col-sm-8 col-sm-offset-2">
+<div class="pull-right">
+	<a href="#/dashboard/{{current_user.name}}">Dashboard</a> | <a href="/">Logout</a>
+</div>
+
+	<h3><a href='#/profile/{{selected_topic._user._id}}'>{{selected_topic._user.name}}</a> posted a topic:</h3>
+	<h3><b>{{selected_topic.topic}}</b></h3>
+		<p><b>Description:</b> {{selected_topic.description}}</p>
+		
+		<hr>
+
+		<label for="post">Post you answer here...</label>
+			<textarea style="vertical-align: top" cols="70" rows="5" ng-model="new_post.post"></textarea>
+		<p>
+		<input type="submit" ng-click="addPost()" class="btn btn-success pull-right" value="Post">
+	<br>
+	<hr>
+	<br>
+	<div ng-repeat="post in posts">
+			<p><a href='#/profile/{{post._user._id}}'>{{post._user.name}}</a>: {{post.post}}</p>
+			<li ng-repeat="comment in post.comments">
+				<ul>{{comment}}: {{comment.comment}}</ul>
+			</li>
+			<form>
+				<textarea style="vertical-align: top" cols="70" rows="2" ng-model="new_comment"></textarea><input type="submit" class="btn btn-primary pull-right" value="Comment" ng-click="addComment(post._id, new_comment)">
+			</form>
+			<hr>
+	
+	</div>
+
+
+
+</div>

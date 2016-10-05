@@ -1,0 +1,13 @@
+<div class="col-sm-8 col-sm-offset-2">
+<br>
+<h2>Hello!</h2>
+<h2>Please enter your name to join and share your ideas:</h2>
+<h5 style="color: red;" ng-bind="error_message"></h5>
+<br>
+<br>
+<br>
+<br>
+	<label for="name">Your Name:</label>
+	<input type="text" ng-model="new_user.name">
+	<button type="submit" ng-click="addUser()" class="btn btn-primary">Enter</button>
+</div>
